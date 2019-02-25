@@ -20,6 +20,20 @@
         <bootsplash-theme>bgrt</bootsplash-theme>
         <bootloader-theme>openSUSE</bootloader-theme>
     </preferences>
+    <preferences>
+	    <type image="vmx" filesystem="btrfs" bootloader="grub2" kernelcmdline="splash" firmware="efi" format="qcow2">
+	    <size>8192</size>
+         </type>
+	<type image="oem" filesystem="ext4" initrd_system="dracut" installpxe="true" bootloader="grub2" kernelcmdline="splash" firmware="efi">
+        <oemconfig>
+            <oem-systemsize>2048</oem-systemsize>
+            <oem-swap>true</oem-swap>
+            <oem-device-filter>/dev/ram</oem-device-filter>
+            <oem-multipath-scan>false</oem-multipath-scan>
+	    <oem-unattended>true</oem-unattended>
+        </oemconfig>
+        </type >
+    </preferences>
     <users>
         <user password="$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0" home="/root" name="root" groups="root"/>
     </users>
@@ -37,6 +51,7 @@
         <package name="iputils"/>
         <package name="vim"/>
         <package name="grub2"/>
+        <package name="grub2-x86_64-efi" arch="x86_64"/>
         <package name="grub2-i386-pc"/>
         <package name="syslinux"/>
         <package name="lvm2"/>
@@ -51,6 +66,8 @@
         <package name="bash-completion"/>
         <package name="dhcp-client"/>
         <package name="which"/>
+	<package name="snapper"/>
+        <package name="shim"/>
         <package name="kernel-default"/>
         <package name="timezone"/>
     </packages>
@@ -68,5 +85,10 @@
         <package name="cracklib-dict-full"/>
         <package name="ca-certificates"/>
         <package name="openSUSE-release"/>
+    </packages>
+    <packages type="oem">
+        <package name="gfxboot-branding-openSUSE"/>
+        <package name="dracut-kiwi-oem-repart"/>
+        <package name="dracut-kiwi-oem-dump"/>
     </packages>
 </image>
