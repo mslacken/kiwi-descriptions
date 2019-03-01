@@ -36,6 +36,7 @@
     </preferences>
     <users>
         <user password="$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0" home="/root" name="root" groups="root"/>
+	<user password="$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0" home="/home/chris" name="chris" groups="users"/>
     </users>
     <repository type="rpm-md" alias="kiwi" priority="1">
         <source path="obs://Virtualization:Appliances:Builder/openSUSE_Tumbleweed"/>
@@ -90,5 +91,10 @@
         <package name="gfxboot-branding-openSUSE"/>
         <package name="dracut-kiwi-oem-repart"/>
         <package name="dracut-kiwi-oem-dump"/>
+    </packages>
+    <packages type="vmx">
+        <package name="ca-certificates"/>
+	<package name="ca-certificates-mozilla"/>
+        <package name="openSUSE-release"/>
     </packages>
 </image>
