@@ -22,7 +22,7 @@
     </preferences>
     <preferences>
 	    <type image="vmx" filesystem="btrfs" bootloader="grub2" kernelcmdline="splash" firmware="efi" format="qcow2">
-	    <size>8192</size>
+	    <size>32768</size>
          </type>
 	<type image="oem" filesystem="ext4" initrd_system="dracut" installpxe="true" bootloader="grub2" kernelcmdline="splash" firmware="efi">
         <oemconfig>
