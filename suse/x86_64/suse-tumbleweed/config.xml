@@ -18,7 +18,7 @@
         <rpm-excludedocs>true</rpm-excludedocs>
         <rpm-check-signatures>false</rpm-check-signatures>
         <bootsplash-theme>bgrt</bootsplash-theme>
-        <bootloader-theme>openSUSE</bootloader-theme>
+        <bootloader-theme>bgrt</bootloader-theme>
     </preferences>
     <preferences>
 	    <type image="vmx" filesystem="btrfs" bootloader="grub2" kernelcmdline="splash" firmware="efi" format="qcow2">
