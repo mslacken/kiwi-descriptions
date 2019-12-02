@@ -67,7 +67,7 @@
         <package name="bash-completion"/>
         <package name="dhcp-client"/>
         <package name="which"/>
-        <package name="python2"/>
+        <package name="python3"/>
 	<package name="snapper"/>
         <package name="shim"/>
         <package name="kernel-default"/>
