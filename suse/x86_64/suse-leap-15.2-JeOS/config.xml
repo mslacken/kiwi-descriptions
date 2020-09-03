@@ -21,7 +21,9 @@
         <bootloader-theme>openSUSE</bootloader-theme>
     </preferences>
     <preferences>
-        <type image="vmx" filesystem="ext4" bootloader="grub2" kernelcmdline="splash" firmware="efi"/>
+        <type image="vmx" filesystem="btrfs" bootloader="grub2" kernelcmdline="splash" firmware="efi" format="qcow2">
+          <size>32768</size>
+        </type>
         <type image="oem" filesystem="ext4" initrd_system="dracut" installiso="true" bootloader="grub2" kernelcmdline="splash" firmware="efi">
             <oemconfig>
                 <oem-systemsize>2048</oem-systemsize>
@@ -88,6 +90,11 @@
         <package name="glibc-locale"/>
         <package name="cracklib-dict-full"/>
         <package name="ca-certificates"/>
+        <package name="openSUSE-release"/>
+    </packages>
+    <packages type="vmx">
+        <package name="ca-certificates"/>
+	<package name="ca-certificates-mozilla"/>
         <package name="openSUSE-release"/>
     </packages>
 </image>
