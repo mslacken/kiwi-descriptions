@@ -100,4 +100,9 @@
         <package name="ca-certificates"/>
         <package name="openSUSE-release"/>
     </packages>
+    <packages type="vmx">
+        <package name="ca-certificates"/>
+	<package name="ca-certificates-mozilla"/>
+        <package name="openSUSE-release"/>
+    </packages>
 </image>
