@@ -41,12 +41,6 @@ suseInsertService sshd
 #--------------------------------------
 baseSetRunlevel 3
 
-#==========================================
-# remove package docs
-#------------------------------------------
-rm -rf /usr/share/doc/packages/*
-rm -rf /usr/share/doc/manual/*
-rm -rf /opt/kde*
 
 #======================================
 # only basic version of vim is
@@ -63,3 +57,12 @@ suseConfig
 # Remove yast if not in use
 #--------------------------------------
 suseRemoveYaST
+
+# add local repo
+mkdir /root/local
+zypper ar -p10 /root/local/ local
+
+# have a seperate user
+useradd -m chris
+cp -r /root/.ssh /home/chris
+chown chris:users /home/chris/.ssh
