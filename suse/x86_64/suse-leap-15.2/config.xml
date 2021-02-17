@@ -10,7 +10,6 @@
     </description>
     <profiles>
         <profile name="Live" description="Live image" import="true"/>
-        <profile name="Virtual" description="Simple Disk image"/>
         <profile name="Disk" description="Expandable Disk image"/>
     </profiles>
     <preferences>
@@ -26,14 +25,6 @@
     </preferences>
     <preferences profiles="Live">
         <type image="iso" primary="true" flags="overlay" hybrid="true" firmware="efi" kernelcmdline="splash" hybridpersistent_filesystem="ext4" hybridpersistent="true" mediacheck="true"/>
-    </preferences>
-    <preferences profiles="Virtual">
-        <type image="vmx" filesystem="ext4" bootloader="grub2" kernelcmdline="splash" firmware="efi">
-            <machine memory="512" guestOS="suse" HWversion="4">
-                <vmdisk id="0" controller="ide"/>
-                <vmnic driver="e1000" interface="0" mode="bridged"/>
-            </machine>
-        </type>
     </preferences>
     <preferences profiles="Disk">
         <type image="oem" filesystem="btrfs" initrd_system="dracut" installiso="true" bootloader="grub2" kernelcmdline="splash" firmware="efi" format="qcow2">
@@ -101,11 +92,6 @@
         <package name="glibc-locale"/>
         <package name="cracklib-dict-full"/>
         <package name="ca-certificates"/>
-        <package name="openSUSE-release"/>
-    </packages>
-    <packages type="vmx">
-        <package name="ca-certificates"/>
-	<package name="ca-certificates-mozilla"/>
         <package name="openSUSE-release"/>
     </packages>
 </image>

@@ -67,10 +67,8 @@ suseRemoveYaST
 mkdir /root/local
 zypper ar -p10 /root/local/ local
 
-# have a seperate user
-useradd -m chris
 cp -r /root/.ssh /home/chris
 chown chris:users /home/chris/.ssh
-groupadd -r munge
-useradd -r -g munge -d /run/munge -s /bin/false -c "MUNGE user" munge
-chown -R munge:munge /etc/munge
+#groupadd -r munge
+#useradd -r -g munge -d /run/munge -s /bin/false -c "MUNGE user" munge
+#chown -R munge:munge /etc/munge
