@@ -71,3 +71,6 @@ zypper ar -p10 /root/local/ local
 useradd -m chris
 cp -r /root/.ssh /home/chris
 chown chris:users /home/chris/.ssh
+groupadd -r munge
+useradd -r -g munge -d %munge_run -s /bin/false -c /run/munge munge
+chown -R munge:munge /etc/munge
