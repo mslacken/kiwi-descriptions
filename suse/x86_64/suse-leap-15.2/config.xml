@@ -36,17 +36,20 @@
         </type>
     </preferences>
     <preferences profiles="Disk">
-        <type image="oem" filesystem="ext4" initrd_system="dracut" installiso="true" bootloader="grub2" kernelcmdline="splash" firmware="efi">
+        <type image="oem" filesystem="btrfs" initrd_system="dracut" installiso="true" bootloader="grub2" kernelcmdline="splash" firmware="efi" format="qcow2">
             <oemconfig>
                 <oem-systemsize>2048</oem-systemsize>
                 <oem-swap>true</oem-swap>
                 <oem-device-filter>/dev/ram</oem-device-filter>
                 <oem-multipath-scan>false</oem-multipath-scan>
+                <oem-unattended>true</oem-unattended>
             </oemconfig>
+            <size unit="G">32</size>
         </type>
     </preferences>
     <users>
         <user password="$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0" home="/root" name="root" groups="root"/>
+        <user password="$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0" home="/home/chris" name="chris" groups="users"/>
     </users>
     <repository type="rpm-md" alias="kiwi" priority="1">
         <source path="obs://Virtualization:Appliances:Builder/openSUSE_Leap_15.2"/>
