@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<image schemaversion="6.8" name="Leap-15.2_appliance">
+<image schemaversion="6.8" name="tumbleweed">
     <description type="system">
         <author>Marcus Schaefer</author>
         <contact>ms@suse.de</contact>
         <specification>
-            Leap 15.2 Appliance, is a small text based image
+            Leap 15.3 Appliance, is a small text based image
         </specification>
     </description>
-    <profiles>
-        <profile name="Live" description="Live image" import="true"/>
-        <profile name="Disk" description="Expandable Disk image"/>
-    </profiles>
     <preferences>
-        <version>1.15.2</version>
+        <type image="iso" primary="true" flags="overlay" hybrid="true" hybridpersistent_filesystem="ext4" hybridpersistent="true"/>
+        <version>1.99.1</version>
         <packagemanager>zypper</packagemanager>
         <locale>en_US</locale>
         <keytable>us</keytable>
@@ -21,42 +18,34 @@
         <rpm-excludedocs>true</rpm-excludedocs>
         <rpm-check-signatures>false</rpm-check-signatures>
         <bootsplash-theme>bgrt</bootsplash-theme>
-        <bootloader-theme>openSUSE</bootloader-theme>
+        <bootloader-theme>bgrt</bootloader-theme>
     </preferences>
-    <preferences profiles="Live">
-        <type image="iso" primary="true" flags="overlay" hybrid="true" firmware="efi" kernelcmdline="splash" hybridpersistent_filesystem="ext4" hybridpersistent="true" mediacheck="true"/>
-    </preferences>
-    <preferences profiles="Disk">
-        <type image="oem" filesystem="btrfs" initrd_system="dracut" installiso="true" bootloader="grub2" kernelcmdline="splash" firmware="efi" format="qcow2">
-            <oemconfig>
-                <oem-systemsize>2048</oem-systemsize>
-                <oem-swap>true</oem-swap>
-                <oem-device-filter>/dev/ram</oem-device-filter>
-                <oem-multipath-scan>false</oem-multipath-scan>
-                <oem-unattended>true</oem-unattended>
-            </oemconfig>
-            <size unit="G">32</size>
-        </type>
+    <preferences>
+	<type image="oem" filesystem="ext4" initrd_system="dracut" installpxe="true" bootloader="grub2" kernelcmdline="splash" firmware="efi" format="qcow2">
+        <oemconfig>
+          <oem-unattended>true</oem-unattended>
+        </oemconfig>
+        <size unit="G">32</size>
+        </type >
     </preferences>
     <users>
         <user password="$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0" home="/root" name="root" groups="root"/>
-        <user password="$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0" home="/home/chris" name="chris" groups="users"/>
+	<user password="$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0" home="/home/chris" name="chris" groups="users"/>
     </users>
     <repository type="rpm-md" alias="kiwi" priority="1">
-        <source path="obs://Virtualization:Appliances:Builder/openSUSE_Leap_15.2"/>
+        <source path="obs://Virtualization:Appliances:Builder/openSUSE_Leap_15.3"/>
     </repository>
-    <repository type="rpm-md" alias="Leap_15_2" imageinclude="true">
-        <source path="obs://openSUSE:Leap:15.2/standard"/>
+    <repository type="rpm-md" alias="Leap_15_3" imageinclude="true">
+        <source path="obs://openSUSE:Leap:15.3/standard"/>
     </repository>
     <packages type="image">
-        <package name="checkmedia"/>
         <package name="patterns-openSUSE-base"/>
         <package name="plymouth-theme-bgrt"/>
         <package name="plymouth-dracut"/>
         <package name="grub2-branding-openSUSE"/>
-        <package name="ifplugd"/>
         <package name="iputils"/>
         <package name="vim"/>
+        <package name="neovim"/>
         <package name="grub2"/>
         <package name="grub2-x86_64-efi" arch="x86_64"/>
         <package name="grub2-i386-pc"/>
@@ -73,6 +62,8 @@
         <package name="bash-completion"/>
         <package name="dhcp-client"/>
         <package name="which"/>
+        <package name="python3"/>
+	<package name="snapper"/>
         <package name="shim"/>
         <package name="kernel-default"/>
         <package name="timezone"/>
@@ -81,17 +72,23 @@
         <package name="gfxboot-branding-openSUSE"/>
         <package name="dracut-kiwi-live"/>
     </packages>
+    <packages type="bootstrap">
+        <package name="udev"/>
+        <package name="filesystem"/>
+        <package name="gawk"/>
+        <package name="grep"/>
+        <package name="gzip"/>
+        <package name="glibc-locale"/>
+        <package name="cracklib-dict-full"/>
+        <package name="ca-certificates"/>
+        <package name="openSUSE-release"/>
+    </packages>
     <packages type="oem">
         <package name="gfxboot-branding-openSUSE"/>
         <package name="dracut-kiwi-oem-repart"/>
         <package name="dracut-kiwi-oem-dump"/>
-    </packages>
-    <packages type="bootstrap">
-        <package name="udev"/>
-        <package name="filesystem"/>
-        <package name="glibc-locale"/>
-        <package name="cracklib-dict-full"/>
         <package name="ca-certificates"/>
+        <package name="ca-certificates-mozilla"/>
         <package name="openSUSE-release"/>
     </packages>
 </image>
